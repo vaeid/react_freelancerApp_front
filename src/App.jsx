@@ -1,10 +1,12 @@
+import { Route } from 'react-router-dom';
 import './App.css';
+import Auth from './pages/Auth';
 
 function App() {
   return (
-    <div>
-      <h2>تست فونت وزیر</h2>
-    </div>
+    <Routes>
+      <Route path='/auth' element={<Auth />}></Route>
+    </Routes>
   );
 }
 
