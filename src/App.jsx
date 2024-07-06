@@ -3,7 +3,7 @@ import './App.css';
 function App() {
   return (
     <div>
-      <h2>first start page</h2>
+      <h2>تست فونت وزیر</h2>
     </div>
   );
 }
