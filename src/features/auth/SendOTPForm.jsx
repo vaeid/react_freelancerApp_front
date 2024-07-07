@@ -1,22 +1,9 @@
-import React, { useState } from 'react';
 import TextField from '../../ui/TextField';
-import { useMutation } from '@tanstack/react-query';
-
-export default function SendOTPForm() {
-  const { isPending, error, data, mutateAsync } = useMutation({
-    mutationFn: 'getOtp',
-  });
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const sendOtpHandler = async (e) => {
-    e.preventDefault();
-    try {
-      const data = await mutateAsync({ phoneNumber });
-      console.log();
-    } catch (error) {}
-  };
+import Loading from '../../ui/Loading';
+export default function SendOTPForm({ setPhoneNumber, phoneNumber, onSubmit, isSendingOtp }) {
   return (
     <div>
-      <form className='space-y-4' onSubmit={sendOtpHandler}>
+      <form className='space-y-4' onSubmit={onSubmit}>
         <TextField
           lable='موبایل'
           name='phoneNumber'
@@ -25,7 +12,7 @@ export default function SendOTPForm() {
             setPhoneNumber(e.target.value);
           }}
         />
-        <button className='btn btn--primary btn--block'>ارسال کد تایید</button>
+        {isSendingOtp ? <Loading /> : <button className='btn btn--primary btn--block'>ارسال کد تایید</button>}
       </form>
     </div>
   );
