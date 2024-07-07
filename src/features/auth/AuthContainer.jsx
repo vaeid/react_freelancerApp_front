@@ -5,7 +5,7 @@ import { useMutation } from '@tanstack/react-query';
 import { getOtp } from '../../services/authService';
 import toast from 'react-hot-toast';
 export default function AuthContainer() {
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(1);
   const [phoneNumber, setPhoneNumber] = useState('');
   const {
     isPending,

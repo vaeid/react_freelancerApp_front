@@ -4,6 +4,7 @@ import Auth from './pages/Auth';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'react-hot-toast';
 import CompleteProfile from './pages/CompleteProfile';
+import NotFound from './pages/NotFound';
 
 const queryClient = new QueryClient();
 function App() {
@@ -12,6 +13,8 @@ function App() {
       <Toaster />
       <div className='container max-w-screen-xl'>
         <Routes>
+          {/* <Route path='/' element={<Home />}></Route> */}
+          <Route path='*' element={<NotFound />}></Route>
           <Route path='/auth' element={<Auth />}></Route>
           <Route path='/complete-profile' element={<CompleteProfile />}></Route>
         </Routes>

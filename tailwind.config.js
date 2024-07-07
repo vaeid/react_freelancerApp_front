@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import { fontFamily } from 'tailwindcss/defaultTheme';
+import tailwindFormPlugin from '@tailwindcss/forms';
 function withOpacity(variableName) {
   return ({ opacityValue }) => {
     if (opacityValue !== undefined) {
@@ -51,5 +52,10 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    tailwindFormPlugin({
+      // strategy: 'base', // only generate global styles
+      strategy: 'class', // only generate classes
+    }),
+  ],
 };

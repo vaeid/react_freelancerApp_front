@@ -1,5 +1,8 @@
-import React from 'react';
-
+import CompleteProfileForm from '../features/auth/CompleteProfileForm';
 export default function CompleteProfile() {
-  return <div>CompleteProfile</div>;
+  return (
+    <div>
+      <CompleteProfileForm />
+    </div>
+  );
 }
