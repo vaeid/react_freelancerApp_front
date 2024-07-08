@@ -8,7 +8,6 @@ export default function ProjectsTable() {
 
   if (isLoading) return <Loading />;
   if (projects.length === 0) return <Empty resourceName='پروژه' />;
-  console.log(projects);
   return (
     <Table>
       <Table.Header>

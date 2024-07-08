@@ -6,10 +6,12 @@ import { HiOutlineTrash } from 'react-icons/hi';
 import Modal from '../../ui/Modal';
 import { useState } from 'react';
 import ConfirmDelete from '../../ui/ConfirmDelete';
+import useRemoveProject from './useRemoveProject';
 
 export default function ProjectRow({ project, index }) {
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  const { removeProject, isDeleting } = useRemoveProject();
   return (
     <Table.Row>
       <td className='py-4 pr-2'>{index}</td>
@@ -48,7 +50,12 @@ export default function ProjectRow({ project, index }) {
               <HiOutlineTrash className='w-5 h-5 text-red-900' />
             </button>
             <Modal open={isDeleteOpen} title={`حذف ${project.title}`} onClose={setIsDeleteOpen}>
-              <ConfirmDelete onClose={setIsDeleteOpen} />
+              <ConfirmDelete
+                onClose={() => setIsDeleteOpen(false)}
+                onConfirm={() => removeProject(project._id, { onSuccess: () => setIsDeleteOpen(false) })}
+                resourceName={project.title}
+                disabled={false}
+              />
             </Modal>
           </>
         </div>
