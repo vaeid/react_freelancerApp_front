@@ -1,3 +1,9 @@
+import ProjectsTable from '../features/auth/projects/ProjectsTable';
+
 export default function Projects() {
-  return <div>Projects</div>;
+  return (
+    <div>
+      <ProjectsTable />
+    </div>
+  );
 }
