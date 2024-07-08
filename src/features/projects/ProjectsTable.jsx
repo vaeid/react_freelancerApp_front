@@ -1,6 +1,6 @@
-import Empty from '../../../ui/Empty';
-import Loading from '../../../ui/Loading';
-import Table from '../../../ui/Table';
+import Empty from '../../ui/Empty';
+import Loading from '../../ui/Loading';
+import Table from '../../ui/Table';
 import useOwnerProjects from './useOwnerProjects';
 import ProjectRow from './ProjectRow';
 export default function ProjectsTable() {

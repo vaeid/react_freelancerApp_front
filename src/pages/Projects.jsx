@@ -1,4 +1,4 @@
-import ProjectsTable from '../features/auth/projects/ProjectsTable';
+import ProjectsTable from '../features/projects/ProjectsTable';
 
 export default function Projects() {
   return (
