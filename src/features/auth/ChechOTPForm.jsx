@@ -57,7 +57,7 @@ export default function ChechOTPForm({ phoneNumber, onBack, onResendOtp, otpResp
         {time > 0 ? (
           <p>{time} ثانیه تا ارسال مجدد کد</p>
         ) : (
-          <button onClick={onResendOtp} className='btn btn--outline'>
+          <button onClick={() => onResendOtp({ phoneNumber })} className='btn btn--outline'>
             ارسال مجدد کد
           </button>
         )}

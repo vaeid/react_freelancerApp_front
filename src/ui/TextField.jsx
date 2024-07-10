@@ -9,7 +9,7 @@ function TextField({ label, name, register, validationSchema = {}, type = 'text'
         id={name}
         className='textField__input'
         type={type}
-        autoComplete='off'
+        // autoComplete='off'
       />
       {errors && errors[name] && <span className='text-error block text-sm mt-2'>{errors[name]?.message}</span>}
     </div>

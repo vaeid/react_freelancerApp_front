@@ -1,16 +1,25 @@
-export default function RadioInput({ label, name, value, onchange, checked }) {
+function RadioInput({
+  label,
+  value,
+  register,
+  name,
+  id,
+  validationSchema = {},
+  watch,
+}) {
   return (
-    <div className='flex item-center gap-x-2 text-secondary-600 '>
+    <div className="flex items-center gap-x-2 text-secondary-600">
       <input
-        type='radio'
+        className="cursor-pointer w-4 h-4 form-radio text-primary-900 focus:ring-primary-900 focus:ring-1"
+        type="radio"
         name={name}
-        id={value}
+        id={id}
         value={value}
-        onChange={() => onchange(value)}
-        className='cursor-pointer w-4 h-4 form-radio focus:ring-primary-600'
-        checked={checked}
+        {...register(name, validationSchema)}
+        checked={watch(name) === value}
       />
-      <label htmlFor={value}>{label}</label>
+      <label htmlFor={id}>{label}</label>
     </div>
   );
 }
+export default RadioInput;
