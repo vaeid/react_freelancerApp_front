@@ -1,5 +1,4 @@
 export default function RHFSelection({ label, options, name, register, watch, errors, required }) {
-  console.log(register);
   return (
     <div>
       <label htmlFor='{name}' className='mb-2 block text-secondary-700'>
