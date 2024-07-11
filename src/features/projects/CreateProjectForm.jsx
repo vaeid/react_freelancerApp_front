@@ -5,17 +5,48 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import DatePickerField from '../../ui/DatePickerField';
 import useCategories from '../../hooks/useCategories';
-export default function CreateProjectForm() {
-  const [tags, setTags] = useState([]);
-  const [date, setDate] = useState(new Date());
+import useCreateProject from './useCreateProject';
+import Loading from '../../ui/Loading';
+import useEditProject from './useEditProject';
+export default function CreateProjectForm({ projectToEdit = {}, onClose }) {
+  const { _id: editId } = projectToEdit;
+  const isEditSession = Boolean(editId);
+  const { title, description, budget, category, tags: prevTags, deadline } = projectToEdit;
+  let editValues = {};
+  if (isEditSession) {
+    editValues = { title, description, budget, category: category._id };
+  }
+  const [tags, setTags] = useState(prevTags || []);
+  const [date, setDate] = useState(new Date(deadline || ''));
   const { categories } = useCategories();
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm();
+    reset,
+  } = useForm({ defaultValues: editValues });
+  const { createProject, isCreating } = useCreateProject();
+  const { editProject, isEditing } = useEditProject();
   const onSubmit = (data) => {
-    console.log(data);
+    const newProject = { ...data, tags, deadline: new Date(date).toISOString() };
+    if (isEditSession) {
+      editProject(
+        { newProject, id: editId },
+        {
+          onSuccess: () => {
+            onClose();
+            reset();
+          },
+        }
+      );
+    } else {
+      createProject(newProject, {
+        onSuccess: () => {
+          onClose();
+          reset();
+        },
+      });
+    }
   };
   return (
     <form className='space-y-8' onSubmit={handleSubmit(onSubmit)}>
@@ -68,9 +99,15 @@ export default function CreateProjectForm() {
         <TagsInput value={tags} onChange={setTags} name='tags' placeHolder='تگ ها را وارد کنید' />
       </div>
       <DatePickerField date={date} setDate={setDate} label='ددلاین' />
-      <button className='btn btn--primary btn--block ' type='submit'>
-        ذخیره
-      </button>
+      <div className='!mt-8'>
+        {isCreating || isEditing ? (
+          <Loading />
+        ) : (
+          <button type='submit' className='btn btn--primary w-full'>
+            ذخیره
+          </button>
+        )}
+      </div>
     </form>
   );
 }

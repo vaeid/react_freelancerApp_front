@@ -1,12 +1,15 @@
 import { TbPencilMinus } from 'react-icons/tb';
 import Table from '../../ui/Table';
 import { toLocalDateShort } from '../../utils/dateUtils';
-import { toPersianNumbersWithComma, truncateText } from '../../utils/stringUtils';
-import { HiOutlineTrash } from 'react-icons/hi';
+import { toPersianNumbers, toPersianNumbersWithComma, truncateText } from '../../utils/stringUtils';
+import { HiOutlineEye, HiOutlineTrash } from 'react-icons/hi';
 import Modal from '../../ui/Modal';
 import { useState } from 'react';
 import ConfirmDelete from '../../ui/ConfirmDelete';
 import useRemoveProject from './useRemoveProject';
+import CreateProjectForm from './CreateProjectForm';
+import ToggleProjectStatus from './ToggleProjectStatus';
+import { Link } from 'react-router-dom';
 
 export default function ProjectRow({ project, index }) {
   const [isEditOpen, setIsEditOpen] = useState(false);
@@ -29,20 +32,17 @@ export default function ProjectRow({ project, index }) {
         </div>
       </td>
       <td>
-        {project.status === 'OPEN' ? (
-          <span className='badge badge--success'>باز</span>
-        ) : (
-          <span className='badge badge--danger'>بسته</span>
-        )}
+        <ToggleProjectStatus project={project} config={{ checkedText: 'باز', unCheckedText: 'بسته' }} />
       </td>
+      <td>{toPersianNumbers(project.proposals.length)}</td>
       <td className='cursor-pointer'>
         <div className='flex gap-x-6 items-center'>
           <>
             <button onClick={() => setIsEditOpen(true)}>
               <TbPencilMinus className='w-5 h-5 text-primary-900' />
             </button>
-            <Modal open={isEditOpen} title={'Modal'} onClose={setIsEditOpen}>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, fuga.
+            <Modal open={isEditOpen} title={`ویرایش ${project.title}`} onClose={setIsEditOpen}>
+              <CreateProjectForm projectToEdit={project} onClose={() => setIsEditOpen(false)} />
             </Modal>
           </>
           <>
@@ -51,6 +51,7 @@ export default function ProjectRow({ project, index }) {
             </button>
             <Modal open={isDeleteOpen} title={`حذف ${project.title}`} onClose={setIsDeleteOpen}>
               <ConfirmDelete
+                isDeleting={isDeleting}
                 onClose={() => setIsDeleteOpen(false)}
                 onConfirm={() => removeProject(project._id, { onSuccess: () => setIsDeleteOpen(false) })}
                 resourceName={project.title}
@@ -58,6 +59,9 @@ export default function ProjectRow({ project, index }) {
               />
             </Modal>
           </>
+          <Link to={project._id}>
+            <HiOutlineEye className='w-5 h-5 text-primary-900' />
+          </Link>
         </div>
       </td>
     </Table.Row>
