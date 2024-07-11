@@ -44,7 +44,7 @@ export default function ChechOTPForm({ phoneNumber, onBack, onResendOtp, otpResp
         <HiArrowRight className='text-secondary-500 w-6 h-6' />
       </button>
       {otpResponse && (
-        <div className='mb-5 text-center'>
+        <div className='mb-5 text-center text-secondary-700'>
           <p>{otpResponse.message}</p>
           <button className='text-secondary-500' onClick={onBack}>
             ویرایش شماره
@@ -53,7 +53,7 @@ export default function ChechOTPForm({ phoneNumber, onBack, onResendOtp, otpResp
       )}
       <hr />
       <br />
-      <div className='mb-4 text-center'>
+      <div className='mb-4 text-center  text-secondary-700'>
         {time > 0 ? (
           <p>{time} ثانیه تا ارسال مجدد کد</p>
         ) : (

@@ -8,7 +8,7 @@ export default function AppLayout() {
       <div className=' bg-secondary-0 py-4 px-8 col-span-2 shadow-lg border-b border-secondary-100'>
         <Header />
       </div>
-      <div className=' bg-secondary-0 hidden md:table-cell'>
+      <div className=' bg-secondary-0 hidden md:table-cell rounded-lg'>
         <Sidebar />
       </div>
       <div className=' bg-secondary-100 p-4 overflow-y-auto rounded-lg '>

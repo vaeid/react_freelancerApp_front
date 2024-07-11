@@ -12,7 +12,7 @@ export default function Toggle({
         onChange={onChange}
         className={`group inline-flex h-6 w-14 items-center rounded-full  transition ${color.enabled} data-[checked]:${color.disable} `}
       >
-        <span className='size-4 -translate-x-1 rounded-full bg-white transition group-data-[checked]:-translate-x-9' />
+        <span className='size-4 -translate-x-1 rounded-full bg-secondary-0 transition group-data-[checked]:-translate-x-9' />
         <span className='text-secondary-0 -translate-x-2  group-data-[checked]:translate-x-1'>
           {enabled ? text.enabled : text.disable}
         </span>
