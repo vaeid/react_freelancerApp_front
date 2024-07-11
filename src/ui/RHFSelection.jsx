@@ -1,4 +1,4 @@
-export default function RHFSelection({ label, options, name, register, watch, errors, required }) {
+export default function RHFSelection({ label, options = [], name, register, watch, errors, required }) {
   return (
     <div>
       <label htmlFor='{name}' className='mb-2 block text-secondary-700'>

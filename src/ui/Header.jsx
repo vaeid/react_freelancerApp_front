@@ -1,13 +1,11 @@
-import { HiMenu } from 'react-icons/hi';
-import useUser from '../features/auth/useUser';
+import UserAvatar from '../features/auth/UserAvatar';
+import HeaderMenu from './HeaderMenu';
 
 export default function Header() {
-  const { data } = useUser();
-  const { user } = data || {};
   return (
-    <div className='flex justify-between '>
-      <HiMenu className='w-5 h-5' />
-      <span className='text-base text-bold'>{user?.name}</span>
+    <div className='flex justify-between container'>
+      <HeaderMenu />
+      <UserAvatar />
     </div>
   );
 }
