@@ -9,12 +9,12 @@ import AppLayout from './ui/AppLayout';
 import OwnerDashboard from './pages/OwnerDashboard';
 import Projects from './pages/Projects';
 import Project from './pages/Project';
-import { DatKModeProvider } from './context/DarkModeContext';
+import { DarKModeProvider } from './context/DarkModeContext';
 
 const queryClient = new QueryClient();
 export default function App() {
   return (
-    <DatKModeProvider>
+    <DarKModeProvider>
       <QueryClientProvider client={queryClient}>
         <Toaster />
         <Routes>
@@ -29,6 +29,6 @@ export default function App() {
           <Route path='*' element={<NotFound />} />
         </Routes>
       </QueryClientProvider>
-    </DatKModeProvider>
+    </DarKModeProvider>
   );
 }
