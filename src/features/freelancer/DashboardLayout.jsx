@@ -1,15 +1,15 @@
 import Stats from './Stats';
-import useOwnerProjects from '../projects/useOwnerProjects';
+import useProposals from '../proposals//useProposals';
 import Loading from '../../ui/Loading';
 import ContentHeader from '../../ui/ContentHeader';
 
 export default function DashboardLayout() {
-  const { isLoading, projects } = useOwnerProjects();
+  const { isLoading, proposals } = useProposals();
   if (isLoading) return <Loading />;
   return (
     <div>
       <ContentHeader title='آمار کلی' description='در یک نگاه آمار خود را ببینید' />
-      <Stats projects={projects} />
+      <Stats proposals={proposals} />
     </div>
   );
 }

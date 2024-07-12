@@ -1,15 +1,19 @@
 import AppLayout from '../../ui/AppLayout';
 import NavItem from '../../ui/NavItem';
 import Sidebar from '../../ui/Sidebar';
-import { HiHome, HiViewGrid } from 'react-icons/hi';
+import { HiCollection, HiHome, HiViewGrid } from 'react-icons/hi';
 
-export default function OwnerLayout() {
+export default function FreelancerLayout() {
   return (
     <AppLayout>
       <Sidebar>
         <NavItem to='dashboard'>
           <HiHome />
           <span>داشبورد</span>
+        </NavItem>
+        <NavItem to='proposals'>
+          <HiCollection />
+          <span>درخواست ها</span>
         </NavItem>
         <NavItem to='projects'>
           <HiViewGrid />
