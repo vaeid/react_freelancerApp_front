@@ -1,7 +1,5 @@
-import { TbPencilMinus } from 'react-icons/tb';
 import Table from '../../ui/Table';
 import { toPersianNumbers, toPersianNumbersWithComma, truncateText } from '../../utils/stringUtils';
-import { HiOutlineTrash } from 'react-icons/hi';
 import { useState } from 'react';
 import Modal from '../../ui/Modal';
 import ChangeProposalStatus from './ChangeProposalStatus';
@@ -23,6 +21,7 @@ export default function ProposalRow({ proposal, index }) {
       <td>
         <span className={`badge ${statusStyle[status].className}`}>{statusStyle[status].lable}</span>
       </td>
+
       <td className='cursor-pointer'>
         <>
           <Modal title='تغییر وضعیت درخواست' open={open} onClose={() => setOpen(false)}>
