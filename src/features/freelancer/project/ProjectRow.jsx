@@ -1,10 +1,14 @@
 import { MdAssignmentAdd } from 'react-icons/md';
 import Table from '../../../ui/Table';
+import Modal from '../../../ui/Modal';
 import { toLocalDateShort } from '../../../utils/dateUtils';
 import { toPersianNumbersWithComma, truncateText } from '../../../utils/stringUtils';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import CreateProposal from '../../proposals/CreateProposal';
+import { PROJECT } from '../../../config/noms';
 
 export default function ProjectRow({ project, index }) {
+  const [open, setOpen] = useState(false);
   return (
     <Table.Row>
       <td className='py-4 pr-2'>{index + 1}</td>
@@ -13,14 +17,23 @@ export default function ProjectRow({ project, index }) {
       <td>{toPersianNumbersWithComma(project.budget)}</td>
       <td>{toLocalDateShort(project.deadline)}</td>
 
-      <td>{project.status}</td>
+      <td>
+        {project.status === PROJECT.STATUS.OPEN ? (
+          <span className='badge badge--success'>باز</span>
+        ) : (
+          <span className='badge badge--danger'>بسته</span>
+        )}
+      </td>
 
       <td className='cursor-pointer'>
         <div className='flex gap-x-6 items-center'>
-          <Link to={project._id}>
+          <button onClick={() => setOpen(true)}>
             <MdAssignmentAdd className='w-5 h-5 text-primary-900' />
-          </Link>
+          </button>
         </div>
+        <Modal open={open} onClose={() => setOpen(false)} title={`ارسال پیشنهاد برای  ${project.title}`}>
+          <CreateProposal project={project} onClose={() => setOpen(false)} />
+        </Modal>
       </td>
     </Table.Row>
   );

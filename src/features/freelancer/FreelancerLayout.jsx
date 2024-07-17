@@ -9,7 +9,7 @@ export default function FreelancerLayout() {
       <Sidebar>
         <NavItem to='dashboard'>
           <HiHome />
-          <span>داشبورد</span>
+          <span> داشبورد (فریلنسر)</span>
         </NavItem>
         <NavItem to='proposals'>
           <HiCollection />

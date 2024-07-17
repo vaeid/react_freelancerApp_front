@@ -18,7 +18,7 @@ export default function ChangeProposalStatus({ proposalId, onClose }) {
   const { changeStatus, isUpdating } = useProposalStatus();
   const onSubmit = (data) => {
     changeStatus(
-      { id: proposalId, data },
+      { proposalId, projectId, ...data },
       {
         onSuccess: (data) => {
           onClose();

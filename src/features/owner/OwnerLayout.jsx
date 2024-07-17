@@ -9,7 +9,7 @@ export default function OwnerLayout() {
       <Sidebar>
         <NavItem to='dashboard'>
           <HiHome />
-          <span>داشبورد</span>
+          <span>داشبورد (کارفرما)</span>
         </NavItem>
         <NavItem to='projects'>
           <HiViewGrid />

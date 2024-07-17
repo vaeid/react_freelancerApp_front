@@ -2,6 +2,7 @@ import ProjectHeader from '../features/project/ProjectHeader';
 import ProposalsTable from '../features/project/ProposalsTable';
 import useProject from '../features/project/useProject';
 import Loading from '../ui/Loading';
+import ContentHeader from '../ui/ContentHeader';
 
 export default function Project() {
   const { project, isLoading } = useProject();
@@ -10,6 +11,7 @@ export default function Project() {
 
   return (
     <div>
+      <ContentHeader title={project.title} description={project.description} isBack={true} />
       <ProjectHeader project={project} />
       <ProposalsTable proposals={project.proposals} />
     </div>
