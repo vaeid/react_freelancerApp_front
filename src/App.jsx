@@ -14,12 +14,13 @@ import FreelancerLayout from './features/freelancer/FreelancerLayout';
 import FreelancerDashboard from './pages/FreelancerDashboard';
 import Proposals from './pages/Proposals';
 import SubmittedProjects from './pages/SubmittedProjects';
-
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 const queryClient = new QueryClient();
 export default function App() {
   return (
     <DarKModeProvider>
       <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools initialIsOpen={false} />
         <Toaster />
         <Routes>
           <Route path='/auth' element={<Auth />} />

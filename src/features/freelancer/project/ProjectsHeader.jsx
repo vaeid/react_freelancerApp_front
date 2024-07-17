@@ -12,7 +12,7 @@ function ProjectsHeader() {
   const statusOptions = [
     { value: 'All', label: ' همه' },
     { value: 'OPEN', label: ' باز' },
-    { value: 'CLOSE', label: ' بسته' },
+    { value: 'CLOSED', label: ' بسته' },
   ];
 
   return (
