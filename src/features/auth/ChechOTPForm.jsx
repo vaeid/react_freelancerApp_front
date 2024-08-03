@@ -24,6 +24,7 @@ export default function ChechOTPForm({ phoneNumber, onBack, onResendOtp, otpResp
       if (user.status === 2) {
         if (user.role === 'OWNER') return navigate('/owner');
         if (user.role === 'FREELANCER') return navigate('/freelancer');
+        if (user.role === 'ADMIN') return navigate('/admin');
       } else {
         toast.error('پروفایل شما در انتظار تایید است');
         return navigate('/active');

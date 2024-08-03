@@ -1,14 +1,22 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SendOTPForm from './SendOTPForm';
 import ChechOTPForm from './ChechOTPForm';
 import { useMutation } from '@tanstack/react-query';
 import { getOtp } from '../../services/authService';
 import toast from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
+import useUser from './useUser';
+import { useNavigate } from 'react-router-dom';
 export default function AuthContainer() {
   const [step, setStep] = useState(1);
+  const navigate = useNavigate();
+  const { user } = useUser();
+  useEffect(() => {
+    if (user) navigate('/', { replace: true });
+  }, [user, navigate]);
   // const [phoneNumber, setPhoneNumber] = useState('');
   const { register, getValues, handleSubmit } = useForm();
+
   const {
     isPending,
     data: otpResponse,

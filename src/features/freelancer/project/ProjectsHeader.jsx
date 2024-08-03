@@ -4,13 +4,13 @@ import FilterDropDown from '../../../ui/FilterDropDown';
 
 function ProjectsHeader() {
   const { transformCategories } = useCategories();
-  const categoryOptions = [{ value: 'All', label: 'دسته بندی (همه)' }, ...transformCategories];
+  const categoryOptions = [{ value: '', label: 'دسته بندی (همه)' }, ...transformCategories];
   const sortOptions = [
     { value: 'earliest', label: ' مرتب سازی (جدیدترین)' },
     { value: 'latest', label: ' مرتب سازی (قدیمی ترین)' },
   ];
   const statusOptions = [
-    { value: 'All', label: ' همه' },
+    { value: '', label: ' همه' },
     { value: 'OPEN', label: ' باز' },
     { value: 'CLOSED', label: ' بسته' },
   ];
